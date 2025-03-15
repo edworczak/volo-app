@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  align-items: stretch;
+  background: var(--background);
+  color: var(--foreground);
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+  min-height: 100dvh;
+  width: 100dvw;
+}
+
+@layer base {
+  input {
+    @apply border-1 border-sky-600;
+  }
+
+  button,
+  .button  {
+    @apply bg-sky-600 text-white px-4 py-2;
+  }
+}
