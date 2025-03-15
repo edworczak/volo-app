@@ -42,7 +42,7 @@ const getUserName = (id: string) => {
                 </>
         ) }
         <div className="flex justify-center">
-            <button>zapisz się</button>
+            <button className="w-full">zapisz się</button>
         </div>
       </div>
     );
