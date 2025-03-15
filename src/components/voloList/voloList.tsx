@@ -21,28 +21,25 @@ const getUserName = (id: string) => {
 
     return (
       <div className="w-full grid grid-cols-1 gap-8">
-        {!voloList ? (
-            <Card title="lista osób volo">Nie ma jeszcze nikogo</Card>
-        ) :  (
-            <>
             <Card title="lista osób volo">
-                    {voloList.map((volo, i) => {
+                    {voloList ? voloList.map((volo, i) => {
                         if (i < maxVolo) return (
                             <p>{getUserName(volo.user)}</p>
                         )
-                    })}
+                    }) : "Nie ma jeszcze nikogo"}
+                    <div className="border-t-2 border-purple-900 pt-4 mt-4">
+                        {voloList ? voloList.length : 0}/{maxVolo}
+                    </div>
                   </Card>
-                  <Card title="lista rezerwowa">
+                  {(voloList && voloList.length > maxVolo) && <Card title="lista rezerwowa">
                     {voloList.map((volo, i) => {
                         if (i >= maxVolo) return (
                             <p>{getUserName(volo.user)}</p>
                         )
                     })}
-                </Card>
-                </>
-        ) }
+                </Card>}
         <div className="flex justify-center">
-            <button className="w-full">zapisz się</button>
+            <button className="w-full primary">zapisz się</button>
         </div>
       </div>
     );

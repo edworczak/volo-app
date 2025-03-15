@@ -33,7 +33,7 @@ const getVoloNumber = () => {
   }
 
   return (
-    <ContentWithStickyHeader title={eventData.name}>
+    <ContentWithStickyHeader title={eventData.name} backPath="/panel/events">
       <div className="grid grid-cols-1 gap-8">
         <Card title="szczegóły">
           <div>
@@ -58,6 +58,7 @@ const getVoloNumber = () => {
         </Card>
       <VoloList eventId={eventData.id} maxVolo={eventData.maxVolo ? eventData.maxVolo : eventData.minVolo}/>
       </div>
+    
     </ContentWithStickyHeader>
   );
 }

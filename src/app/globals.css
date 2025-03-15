@@ -36,8 +36,13 @@ body {
 
   button,
   .button  {
-    @apply bg-sky-600 text-white px-4 py-2;
-    @apply block text-center;
-    @apply cursor-pointer uppercase tracking-[.25em];
+    @apply bg-white text-sky-600 border-2 border-sky-600;
+    @apply block cursor-pointer px-6 py-2;
+    @apply uppercase tracking-[.25em] text-center font-bold;
+    @apply rounded-[50vh];
+
+    &.primary {
+      @apply bg-sky-600 text-white;
+    }
   }
 }
