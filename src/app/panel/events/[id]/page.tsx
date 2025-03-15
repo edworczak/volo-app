@@ -50,7 +50,11 @@ const getVoloNumber = () => {
           {eventData.info}
         </Card>}
         <Card title="zadania">
-          {eventData.voloTasks}
+          <div className="grid grid-cols-1 gap-4">
+            {eventData.tasks.map((task) => {
+              return <p>{task}</p>
+            })}
+          </div>
         </Card>
       <VoloList eventId={eventData.id} maxVolo={eventData.maxVolo ? eventData.maxVolo : eventData.minVolo}/>
       </div>
