@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
 
 :root {
@@ -29,6 +27,9 @@ body {
 }
 
 @layer base {
+  h1 {
+    @apply font-bold;
+  }
   input {
     @apply border-1 border-sky-600;
   }
@@ -36,5 +37,7 @@ body {
   button,
   .button  {
     @apply bg-sky-600 text-white px-4 py-2;
+    @apply block text-center;
+    @apply cursor-pointer uppercase tracking-[.25em];
   }
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import StyledInput from "../common/input/input";
 
 export default function Login() {
@@ -6,6 +7,7 @@ export default function Login() {
         <StyledInput label="adres email" type="email"/>
                 <StyledInput label="hasło" type="password"/>
         <button type="submit">zaloguj</button>
+        <Link href="/panel">nie pamiętam hasła</Link>
       </form>
     );
   }
