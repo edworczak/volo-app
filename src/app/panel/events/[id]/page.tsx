@@ -33,7 +33,11 @@ const getVoloNumber = () => {
   }
 
   return (
-    <ContentWithStickyHeader title={eventData.name} backPath="/panel/events">
+    <ContentWithStickyHeader 
+      title={eventData.name} 
+      backPath="/panel/events"
+      editPath={`edit/${id}`}
+    >
       <div className="grid grid-cols-1 gap-8">
         <Card title="szczegóły">
           <div>
