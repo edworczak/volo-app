@@ -27,6 +27,10 @@ body {
 }
 
 @layer base {
+  .hidden {
+    display: none;
+  }
+
   h1 {
     @apply font-bold;
   }

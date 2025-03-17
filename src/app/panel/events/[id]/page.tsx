@@ -12,8 +12,7 @@ export default async function Event({
 }: {
   params: Promise<{ id: string }>
 }) {
-  const { id } = await params
-  console.log(id)
+  const { id } = await params;
   const eventData = eventsData.find((event) => event.id === id);
   if (!eventData) return <span>404</span>
 

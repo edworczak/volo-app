@@ -8,6 +8,7 @@ export default function Panel() {
         <div className="flex flex-col gap-4">
             <Link className="button" href="/panel/events">wydarzenia</Link>
             <Link className="button" href="/panel/workshops">szkolenia</Link>
+            <Link className="button" href="/panel/workshops">lista osób volo</Link>
         </div>
     </div>
   );

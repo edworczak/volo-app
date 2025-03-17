@@ -26,3 +26,14 @@ export const getDateAndTime = (date: string) => {
 
     return `${dateDay}.${month}.${year}, ${hour}:${minutes}`
 }
+
+export const getInputDayTime = (date: string) => {
+    const newDate = new Date(date);
+    const dateDay = zeroBeforeNumber(newDate.getMonth());
+    const month = zeroBeforeNumber(newDate.getMonth());
+    const year = newDate.getFullYear();
+    const hour = zeroBeforeNumber(newDate.getHours());
+    const minutes = zeroBeforeNumber(newDate.getMinutes());
+
+    return `${year}-${month}-${dateDay}T${hour}:${minutes}`
+}

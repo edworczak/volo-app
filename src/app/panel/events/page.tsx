@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Events() {
   return (
-    <ContentWithStickyHeader title="Lista wydarzeń" backPath="/panel">
+    <ContentWithStickyHeader title="Lista wydarzeń" backPath="/panel" addPath="/panel/events/add">
         <EventsList/>
     </ContentWithStickyHeader>
   );

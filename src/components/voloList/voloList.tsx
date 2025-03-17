@@ -10,14 +10,12 @@ type VoloListParams = {
 
 export default function VoloList({ eventId, maxVolo }: VoloListParams) {
     const isVoloList = eventsVolo.find((event) => event.id === eventId)
-    console.log(maxVolo);
+    const voloList = isVoloList && sortArrayByTimestamp(isVoloList.volo);
 
-const voloList = isVoloList && sortArrayByTimestamp(isVoloList.volo);
-
-const getUserName = (id: string) => {
-    const user = users.find((user) => user.id === id);
-    return user?.name;
-}
+    const getUserName = (id: string) => {
+        const user = users.find((user) => user.id === id);
+        return user?.name;
+    }
 
     return (
       <div className="w-full grid grid-cols-1 gap-8">
@@ -28,7 +26,9 @@ const getUserName = (id: string) => {
                         )
                     }) : "Nie ma jeszcze nikogo"}
                     <div className="border-t-2 border-purple-900 pt-4 mt-4">
-                        {voloList ? voloList.length : 0}/{maxVolo}
+                        <span className={`font-bold text-xl block ${voloList && voloList.length >= maxVolo ? "text-green-800" : "text-pink-800"}`}>
+                            {voloList ? voloList.length : 0}/{maxVolo}
+                        </span>
                     </div>
                   </Card>
                   {(voloList && voloList.length > maxVolo) && <Card title="lista rezerwowa">
