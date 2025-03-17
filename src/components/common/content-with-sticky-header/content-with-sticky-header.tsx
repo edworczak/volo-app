@@ -14,7 +14,7 @@ type ContentWithStickyHeaderProps = {
   export default function ContentWithStickyHeader({ title, children, backPath, editPath, addPath }: ContentWithStickyHeaderProps) {
       return (
           <div className="w-full min-h-full flex flex-col gap-8">
-                <div className="sticky top-0 w-full p-4 flex justify-center bg-white z-10">
+                <div className="sticky top-0 w-full p-4 flex bg-white z-10">
                   <h1>{title}</h1>
                 </div>
                 <div className="p-4 mb-[72px]">

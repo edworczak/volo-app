@@ -13,7 +13,8 @@ export default async function Event({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params;
-  const eventData = eventsData.find((event) => event.id === id);
+  const eventJson = await fetch(`http://localhost:3003/events/${id}`);
+  const eventData = await eventJson.json();
   if (!eventData) return <span>404</span>
 
 const getVoloNumber = () => {
@@ -54,8 +55,8 @@ const getVoloNumber = () => {
         </Card>}
         <Card title="zadania">
           <div className="grid grid-cols-1 gap-4">
-            {eventData.tasks.map((task) => {
-              return <p>{task}</p>
+            {eventData.tasks.map((task: string, i: number) => {
+              return <p key={`task-${i}`}>{task}</p>
             })}
           </div>
         </Card>

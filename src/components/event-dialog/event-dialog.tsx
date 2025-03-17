@@ -4,14 +4,14 @@ import Card from "../common/card/card";
 import StyledInput from "../common/input/input";
 import { getInputDayTime } from "@/utils/utils";
 import { useState } from "react";
+import { EventProps } from "@/utils/types";
 
 type EventDialogProps = {
-    id?: string;
+    event: EventProps;
 }
 
-export default function EventDialog({id}: EventDialogProps) {
-  const eventData = eventsData.find((event) => event.id === id);
-  const [tasks, setTasks] = useState(eventData?.tasks || [""]);
+export default function EventDialog({event}: EventDialogProps) {
+  const [tasks, setTasks] = useState(event?.tasks || [""]);
 
   const addTask = () => {
     const newTasks = tasks;
@@ -27,20 +27,20 @@ export default function EventDialog({id}: EventDialogProps) {
   
     return (
       <form className="flex flex-col gap-4">
-        <StyledInput label="tytuł wydarzenia" value={eventData?.name}/>
-        <StyledInput label="lokalizacja" value={eventData?.location}/>
+        <StyledInput label="tytuł wydarzenia" value={event?.name}/>
+        <StyledInput label="lokalizacja" value={event?.location}/>
         <Card title="czas">
-          <StyledInput label="data wydarzenia" type="datetime-local" value={getInputDayTime(eventData?.date)}/>
-          <StyledInput label="czas trwania" value={eventData?.duration}/>
+          <StyledInput label="data wydarzenia" type="datetime-local" value={getInputDayTime(event?.date)}/>
+          <StyledInput label="czas trwania" value={event?.duration}/>
         </Card>
         <Card title="uwagi">
-          <StyledInput label="wane informacje" value={eventData?.alert}/>
-          <StyledInput label="dodatkowe informacje" value={eventData?.info}/>
+          <StyledInput label="wane informacje" value={event?.alert}/>
+          <StyledInput label="dodatkowe informacje" value={event?.info}/>
         </Card>
         <Card title="osoby volo">
           <div className="grid grid-cols-2 gap-4">
-            <StyledInput label="min liczba" type="number" value={eventData?.minVolo}/>
-            <StyledInput label="maks liczba" type="number" value={eventData?.maxVolo}/>
+            <StyledInput label="min liczba" type="number" value={event?.minVolo}/>
+            <StyledInput label="maks liczba" type="number" value={event?.maxVolo}/>
           </div>
         </Card>
         <Card title="zadania">

@@ -9,7 +9,7 @@ type StyledInputProps = {
       return (
           <label className="flex flex-col gap-2">
             <span className={labelHidden ? "hidden" : ""}>{label}</span>
-            <input className="border-1 border-blue p-2" type={type ? type : "text"} value={value}/>
+            <input className="border-1 border-blue p-2" type={type ? type : "text"} defaultValue={value}/>
           </label>
       );
     }
