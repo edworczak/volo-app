@@ -1,20 +1,20 @@
 export const sortArrayByTimestamp = (array: []) => {
-    return array.sort(( a, b ) => {
-        if ( a.timestamp < b.timestamp ){
-          return -1;
+    return array.sort((a, b) => {
+        if (a.timestamp < b.timestamp) {
+            return -1;
         }
-    
-        if ( a.timestamp > b.timestamp ){
-          return 1;
+
+        if (a.timestamp > b.timestamp) {
+            return 1;
         }
-        
+
         return 0;
-      })
-}
+    });
+};
 
 export const zeroBeforeNumber = (number: number) => {
-    return (number < 10) ? `0${number}` : `${number}`;
-}
+    return number < 10 ? `0${number}` : `${number}`;
+};
 
 export const getDateAndTime = (date: string) => {
     const newDate = new Date(date);
@@ -24,8 +24,8 @@ export const getDateAndTime = (date: string) => {
     const hour = zeroBeforeNumber(newDate.getHours());
     const minutes = zeroBeforeNumber(newDate.getMinutes());
 
-    return `${dateDay}.${month}.${year}, ${hour}:${minutes}`
-}
+    return `${dateDay}.${month}.${year}, ${hour}:${minutes}`;
+};
 
 export const getInputDayTime = (date: string) => {
     const newDate = new Date(date);
@@ -35,5 +35,5 @@ export const getInputDayTime = (date: string) => {
     const hour = zeroBeforeNumber(newDate.getHours());
     const minutes = zeroBeforeNumber(newDate.getMinutes());
 
-    return `${year}-${month}-${dateDay}T${hour}:${minutes}`
-}
+    return `${year}-${month}-${dateDay}T${hour}:${minutes}`;
+};

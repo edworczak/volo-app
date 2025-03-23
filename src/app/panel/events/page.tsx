@@ -5,15 +5,19 @@ import { eventsData } from "@/data/events";
 import Link from "next/link";
 
 export default async function Events() {
-  const eventsJson = await fetch('http://localhost:3003/events');
-  const events = await eventsJson.json();
+    const eventsJson = await fetch("http://localhost:3003/events");
+    const events = await eventsJson.json();
 
-  const eventsVoloJson = await fetch('http://localhost:3003/events-volo');
-  const eventsVolo = await eventsVoloJson.json();
+    const eventsVoloJson = await fetch("http://localhost:3003/events-volo");
+    const eventsVolo = await eventsVoloJson.json();
 
-  return (
-    <ContentWithStickyHeader title="Lista wydarzeń" backPath="/panel" addPath="/panel/events/add">
-        <EventsList events={events} eventsVolo={eventsVolo}/>
-    </ContentWithStickyHeader>
-  );
+    return (
+        <ContentWithStickyHeader
+            title="Lista wydarzeń"
+            backPath="/panel"
+            addPath="/panel/events/add"
+        >
+            <EventsList events={events} eventsVolo={eventsVolo} />
+        </ContentWithStickyHeader>
+    );
 }

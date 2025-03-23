@@ -53,4 +53,4 @@ export const users = [
         email: "email@email.com",
         type: "user",
     },
-]
+];

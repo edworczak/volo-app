@@ -6,42 +6,45 @@ import { users } from "@/data/users";
 type VoloListParams = {
     eventId: string;
     maxVolo: number;
-}
+};
 
 export default function VoloList({ eventId, maxVolo }: VoloListParams) {
-    const isVoloList = eventsVolo.find((event) => event.id === eventId)
+    const isVoloList = eventsVolo.find((event) => event.id === eventId);
     const voloList = isVoloList && sortArrayByTimestamp(isVoloList.volo);
 
     const getUserName = (id: string) => {
         const user = users.find((user) => user.id === id);
         return user?.name;
-    }
+    };
 
     return (
-      <div className="w-full grid grid-cols-1 gap-8">
+        <div className="w-full grid grid-cols-1 gap-8">
             <Card title="lista osób volo">
-                    {voloList ? voloList.map((volo, i) => {
-                        if (i < maxVolo) return (
-                            <p>{getUserName(volo.user)}</p>
-                        )
-                    }) : "Nie ma jeszcze nikogo"}
-                    <div className="border-t-2 border-purple-900 pt-4 mt-4">
-                        <span className={`font-bold text-xl block ${voloList && voloList.length >= maxVolo ? "text-green-800" : "text-pink-800"}`}>
-                            {voloList ? voloList.length : 0}/{maxVolo}
-                        </span>
-                    </div>
-                  </Card>
-                  {(voloList && voloList.length > maxVolo) && <Card title="lista rezerwowa">
+                {voloList
+                    ? voloList.map((volo, i) => {
+                          if (i < maxVolo)
+                              return <p>{getUserName(volo.user)}</p>;
+                      })
+                    : "Nie ma jeszcze nikogo"}
+                <div className="border-t-2 border-purple-900 pt-4 mt-4">
+                    <span
+                        className={`font-bold text-xl block ${voloList && voloList.length >= maxVolo ? "text-green-800" : "text-pink-800"}`}
+                    >
+                        {voloList ? voloList.length : 0}/{maxVolo}
+                    </span>
+                </div>
+            </Card>
+            {voloList && voloList.length > maxVolo && (
+                <Card title="lista rezerwowa">
                     {voloList.map((volo, i) => {
-                        if (i >= maxVolo) return (
-                            <p>{getUserName(volo.user)}</p>
-                        )
+                        if (i >= maxVolo)
+                            return <p>{getUserName(volo.user)}</p>;
                     })}
-                </Card>}
-        <div className="flex justify-center">
-            <button className="w-full primary">zapisz się</button>
+                </Card>
+            )}
+            <div className="flex justify-center">
+                <button className="w-full primary">zapisz się</button>
+            </div>
         </div>
-      </div>
     );
-  }
-  
+}

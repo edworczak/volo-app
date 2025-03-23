@@ -8,61 +8,74 @@ import { getDateAndTime } from "@/utils/utils";
 import Link from "next/link";
 
 export default async function Event({
-  params,
+    params,
 }: {
-  params: Promise<{ id: string }>
+    params: Promise<{ id: string }>;
 }) {
-  const { id } = await params;
-  const eventJson = await fetch(`http://localhost:3003/events/${id}`);
-  const eventData = await eventJson.json();
-  if (!eventData) return <span>404</span>
+    const { id } = await params;
+    const eventJson = await fetch(`http://localhost:3003/events/${id}`);
+    const eventData = await eventJson.json();
+    if (!eventData) return <span>404</span>;
 
-const getVoloNumber = () => {
-  if (eventData.maxVolo && eventData.maxVolo !== eventData.minVolo) {
-    return `${eventData.minVolo} do ${eventData.maxVolo}`
-  } else {
-    return `${eventData.minVolo}`
-  }
-}
+    const getVoloNumber = () => {
+        if (eventData.maxVolo && eventData.maxVolo !== eventData.minVolo) {
+            return `${eventData.minVolo} do ${eventData.maxVolo}`;
+        } else {
+            return `${eventData.minVolo}`;
+        }
+    };
 
-  const getDetailsRow = (label: string, value: string) => {
-    return <div className="grid grid-cols-2 gap-2 py-2">
-      <span>{label}</span>
-      <span className="font-bold text-right">{value}</span>
-    </div>
-  }
+    const getDetailsRow = (label: string, value: string) => {
+        return (
+            <div className="grid grid-cols-2 gap-2 py-2">
+                <span>{label}</span>
+                <span className="font-bold text-right">{value}</span>
+            </div>
+        );
+    };
 
-  return (
-    <ContentWithStickyHeader 
-      title={eventData.name} 
-      backPath="/panel/events"
-      editPath={`edit/${id}`}
-    >
-      <div className="grid grid-cols-1 gap-8">
-        <Card title="szczegóły">
-          <div>
-            {getDetailsRow("Data i czas", getDateAndTime(eventData.date))}
-            {getDetailsRow("Czas trwania", eventData.duration)}
-            {getDetailsRow("Lokalizacja", eventData.location)}
-            {getDetailsRow("Liczba osób volo", getVoloNumber())}
-          </div>
-        </Card>
-        {eventData.alert && <Card title="uwagi" alert>
-          {eventData.alert}
-        </Card>}
-        {eventData.info && <Card title="inofmracje">
-          {eventData.info}
-        </Card>}
-        <Card title="zadania">
-          <div className="grid grid-cols-1 gap-4">
-            {eventData.tasks.map((task: string, i: number) => {
-              return <p key={`task-${i}`}>{task}</p>
-            })}
-          </div>
-        </Card>
-      <VoloList eventId={eventData.id} maxVolo={eventData.maxVolo ? eventData.maxVolo : eventData.minVolo}/>
-      </div>
-    
-    </ContentWithStickyHeader>
-  );
+    return (
+        <ContentWithStickyHeader
+            title={eventData.name}
+            backPath="/panel/events"
+            editPath={`edit/${id}`}
+        >
+            <div className="grid grid-cols-1 gap-8">
+                <Card title="szczegóły">
+                    <div>
+                        {getDetailsRow(
+                            "Data i czas",
+                            getDateAndTime(eventData.date)
+                        )}
+                        {getDetailsRow("Czas trwania", eventData.duration)}
+                        {getDetailsRow("Lokalizacja", eventData.location)}
+                        {getDetailsRow("Liczba osób volo", getVoloNumber())}
+                    </div>
+                </Card>
+                {eventData.alert && (
+                    <Card title="uwagi" alert>
+                        {eventData.alert}
+                    </Card>
+                )}
+                {eventData.info && (
+                    <Card title="inofmracje">{eventData.info}</Card>
+                )}
+                <Card title="zadania">
+                    <div className="grid grid-cols-1 gap-4">
+                        {eventData.tasks.map((task: string, i: number) => {
+                            return <p key={`task-${i}`}>{task}</p>;
+                        })}
+                    </div>
+                </Card>
+                <VoloList
+                    eventId={eventData.id}
+                    maxVolo={
+                        eventData.maxVolo
+                            ? eventData.maxVolo
+                            : eventData.minVolo
+                    }
+                />
+            </div>
+        </ContentWithStickyHeader>
+    );
 }

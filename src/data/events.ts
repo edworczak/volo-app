@@ -14,7 +14,7 @@ export const eventsData = [
             "przekazywanie mikrofonu",
             "donoszenie wody",
             "pilnowanie porządku",
-            "posprzątenie sali po wydarzeniu"
+            "posprzątenie sali po wydarzeniu",
         ],
     },
     {
@@ -53,4 +53,4 @@ export const eventsData = [
             "2 osoby na bramce, sprawdzanie biletów",
         ],
     },
-]
+];

@@ -7,10 +7,14 @@ import Login from "@/components/login/login";
 import { eventsData } from "@/data/events";
 import Link from "next/link";
 
-export default async function EditEvent() {
-  return (
-    <Dialog title="Edytuj wydarzenie" cancelPath={`/panel/events`} confirmPath={`/panel/events`}>
-          <EventDialog />
-    </Dialog>
-  );
+export default async function AddEvent() {
+    return (
+        <Dialog
+            title="Edytuj wydarzenie"
+            cancelPath={`/panel/events`}
+            confirmPath={`/panel/events`}
+        >
+            <EventDialog />
+        </Dialog>
+    );
 }

@@ -9,7 +9,7 @@ export type EventProps = {
     alert?: string;
     info?: string;
     tasks: string[];
-}
+};
 
 export type EventVoloProps = {
     id: string;
@@ -17,4 +17,4 @@ export type EventVoloProps = {
         user: string;
         timestamp: string;
     }[];
-}
+};
